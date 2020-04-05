@@ -162,7 +162,7 @@ db.users.insertMany(
 db.users.find()
 ```
 
-## Update Ooe $set
+## Update One $set
 ```js
 db.users.updateOne({name:"Chris"}, {$set:{name:"Chris Sigera"}})
 db.users.updateOne({name:"Anna"}, {$set:{name:"Chris Sigera"}})
