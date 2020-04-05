@@ -297,7 +297,6 @@ db.users.remove( { "age": null }, { $unset: { age: "" } } )
 ```
 
 # MongoDB comparison operators
-
 ```js
 use ga
 db.createCollection("courses")
@@ -368,15 +367,88 @@ db.courses.find({"class":{$ne:"Data Science"}}).pretty();
 
 db.courses.find({"duration":{$in:["12 weeks","15 weeks"]}}).pretty();
 db.courses.find({"number_of_students":{$in:[25,35]}}).pretty();
+```
+These MongoDB operators are used to perform logical operations on the given expressions.  
+They help to make a decision based on multiple conditions. Each operand is considered a condition that can be evaluated 
+to a true or false value. Then the value of the conditions is used to determine the overall value of all operators used 
+as a group. Below are various logical operators in MongoDB –
+
+```js
+db.courses.find({
+  $and:[{
+    "author":"Joe"},
+    {"fee":8000}
+  ]
+}).pretty();
+
+db.courses.find({
+  $or:[{
+    "class":"Python"},
+    {"class":"Java"}
+  ]
+}).pretty();
+
+db.courses.find({
+  $nor:[
+    {"class":"Python"},
+    {"author":"Suresh"}
+  ]
+}).pretty();
+
+db.courses.find({
+  "class":{
+    $not:{
+      $eq:"Python"
+    }
+  }
+}).pretty();
+
+db.courses.find({
+  $nor:[
+    {"class":"Python"},
+    {"author":"Suresh"}
+  ]
+}).pretty();
+
+db.courses.find({
+  "fee":{
+    $gt:8000
+  }
+}).pretty()
+
+db.courses.find({
+  "fee":{
+    $gte:8000
+  }
+}).pretty()
 
 
-These MongoDB operators are used to perform logical operations on the given expressions.  They help to make a decision based on multiple conditions. Each operand is considered a condition that can be evaluated to a true or false value. Then the value of the conditions is used to determine the overall value of all operators used as a group. Below are various logical operators in MongoDB –
+db.courses.find({
+  "fee":{
+    $lt:8000
+  }
+}).pretty()
 
-db.courses.find({$and:[{"author":"Joe"},{"fee":8000}]}).pretty();
+db.courses.find({
+  "number_of_students":{
+    $lt:20
+  }
+}).pretty()
 
-db.courses.find({$or:[{"class":"Python"},{"class":"Java"}]}).pretty();
+db.courses.find({
+  "fee":{
+    $lte:8000
+  }
+}).pretty()
 
-db.courses.find({$nor:[{"class":"Python"},{"author":"Suresh"}]}).pretty();
-
-db.courses.find({"class":{$not:{$eq:"Python"}}}).pretty();
+db.courses.find({
+  $and:[
+    {"author":"Joe"},
+    {
+      "number_of_students":{
+        $eq: 35
+      }
+    }
+  ]
+}).pretty();
 ```
