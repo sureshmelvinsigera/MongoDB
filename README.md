@@ -244,6 +244,19 @@ db.users.update(
 )
 ```
 
+```js
+db.users.update(
+    {
+        "name": "Chris Sigera" 
+    },
+    {
+        $push:{
+            "programming_languages": "Python" 
+        }
+    }
+)
+```
+
 ## Update single value in the array
 ```js
 
