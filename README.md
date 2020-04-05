@@ -141,6 +141,12 @@ db.users.insertMany(
          "age":30
       },
       {
+         "name":"Manuel",
+         "programming_languages":["Java", "C", "C++", "ASM"],
+         "phone":"312177972",
+         "age":39
+      },
+      {
          "name":"Suresh",
          "programming_languages":["Python", "C", "C++", "Java", "ASM"],
          "phone":"80811987291",
@@ -154,7 +160,7 @@ db.users.insertMany(
       },
       {
          "name":"Chris",
-	   "programming_language":[]	
+	   "programming_languages":[]	
       },
    ]
 )
@@ -237,6 +243,18 @@ db.users.update(
     }
 )
 ```
+
+## Update single value in the array
+```js
+
+db.users.updateOne(
+   { _id: ObjectId("5e89e5ade76e345e3d9a76dd"), programming_languages: "Python" },
+   { $set: { "programming_languages.$" : "Python3" } }
+)
+```
+
+
+
 
 ## Update one $upset - remove fields from all or specific collection records
 ```js
