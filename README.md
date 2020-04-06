@@ -507,3 +507,55 @@ db.courses.find({
   ]
 }).pretty();
 ```
+
+# Modeling Referenced Relationships
+```js
+use ga
+db.createCollection("roles")
+db.roles.insertMany([
+  {
+    "role": "Instructor"
+  },
+  {
+    "role": "IA"
+  },  
+])
+
+
+db.users.insert({
+    name: "Joe",
+    age: 46,
+    user_role: db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb"))
+})
+
+db.users.insert({
+    name: "Suresh",
+    age: 39,
+    user_role: db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb"))
+})
+
+
+db.users.insert({
+    name: "Suresh",
+    age: 39,
+    user_role: db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb"))
+})
+
+db.users.insert({
+    name: "Kenneth",
+    age: 30,
+    user_role:[
+      db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb")),
+      db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cc"))
+    ]
+})
+
+db.users.insert({
+    name: "Stack",
+    age: 30,
+    user_role:[
+      db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb")),
+      db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cc"))
+    ]
+})
+```
