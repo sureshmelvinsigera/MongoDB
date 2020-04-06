@@ -1,9 +1,5 @@
 # MongoDB
 
-1. Do a MongoDB database support foreign-key and primary-key relationship?
-- No, by default, MongoDB doesn't support foreign key or a primary key relationship.
-
-
 ```js
 show dbs
 use my_db
