@@ -296,53 +296,53 @@ db.users.remove({ "_id": ObjectId("5e88de81e76e345e3d9a76d1")})
 
 db.users.remove( { "age": null }, { $unset: { age: "" } } )
 
-db.users.InsertMany([
-{
-		"name" : "Max",
-		"programming_languages" : [
-			"Python",
-			"Go",
-			"C",
-			"C++"
-		],
-		"phone" : "131782734",
-		"has_hobbies" : true
-}
-{
-		"name" : "Suresh",
-		"programming_languages" : [
-			"Python",
-			"C",
-			"C++",
-			"Java",
-			"ASM"
-		],
-		"phone" : "80811987291",
-		"age" : null,
-		"has_hobbies" : true
-}
-{
-		"name" : "Anna",
-		"programming_languages" : [
-			"Python",
-			"C",
-			"C++",
-			"Java",
-			"ASM"
-		],
-		"phone" : "80811987291",
-		"age" : null,
-		"has_hobbies" : true
-}
-{
-		"name" : "Chris Sigera",
-		"programming_languages" : [
-			"ReactJS",
-			"JAVA",
-			"Python3"
-		],
-		"has_hobbies" : true
-}
+db.users.insertMany([ 
+  {
+    "name" : "Max",
+    "programming_languages" : [
+      "Python",
+      "Go",
+      "C",
+      "C++"
+    ],
+    "phone" : "131782734",
+    "has_hobbies" : true
+  },
+  {
+    "name" : "Suresh",
+    "programming_languages" : [
+      "Python",
+      "C",
+      "C++",
+      "Java",
+      "ASM"
+    ],
+    "phone" : "80811987291",
+    "age" : null,
+    "has_hobbies" : true  
+  },
+  {
+    "name" : "Anna",
+    "programming_languages" : [
+      "Python",
+      "C",
+      "C++",
+      "Java",
+      "ASM"
+    ],
+    "phone" : "80811987291",
+    "age" : null,
+    "has_hobbies" : true
+  },
+  {
+    "name" : "Chris Sigera",
+    "programming_languages" : [
+      "ReactJS",
+      "JAVA",
+      "Python3"
+    ],
+    "has_hobbies" : true
+  }
 ])
 
 db.users.find({age: {$exists: false}})
