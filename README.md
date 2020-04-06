@@ -11,7 +11,7 @@ db.createCollection("sample_collection2")
 
 show collections
 
-db.sample_collection2.drop
+db.sample_collection2.drop()
 
 show collections
 
