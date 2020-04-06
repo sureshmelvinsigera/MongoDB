@@ -346,6 +346,8 @@ db.users.insertMany([
 ])
 
 db.users.find({age: {$exists: false}})
+db.users.find({age: {$exists: false}}).count()
+db.users.remove({age: {$exists: false}})
 
 ```
 
