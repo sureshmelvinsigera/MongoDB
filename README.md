@@ -534,13 +534,6 @@ db.users.insert({
     user_role: db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb"))
 })
 
-
-db.users.insert({
-    name: "Suresh",
-    age: 39,
-    user_role: db.roles.findOne(ObjectId("5e8b5b555d9d6dc1b9efc6cb"))
-})
-
 db.users.insert({
     name: "Kenneth",
     age: 30,
