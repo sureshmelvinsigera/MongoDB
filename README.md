@@ -552,3 +552,102 @@ db.users.insert({
     ]
 })
 ```
+
+```
+use music
+db.createCollection('singers')
+```
+
+## One document, One to One Relationship in MongoDB
+```
+db.singers.insert(
+  {
+     _id : 2,
+     artist_name : "XYZ",
+     address : {
+                  street : "Apollo Street",
+                  city : "Mumbai",
+                  state : "Maharashtra",
+                  country : "India"
+                }
+    }
+)
+```
+
+## One to Many Relationships in MongoDB
+```
+db.singers.insert(
+  {
+     _id : 3,
+     artist_name : "Melvin",
+     albums : [
+             {
+               album : "DEF",
+               year : 2000,
+               genre : "Blues"
+               },
+               {
+                    album : "ABC",
+                    year : 2013,
+                    genre : "Classical Music"
+               }
+          ]
+     }
+)
+```
+
+## Document Referenced Relationships in MongoDB: Child Documents
+```
+db.singers.insert(
+  {
+    _id : 4,
+    artist_name : "UVW"
+   }
+)
+```
+
+## Child Documents
+```
+db.createCollection('band_members')
+
+db.band_members.insert(
+{
+    _id : 9,
+    member_name : "GHI",
+    instrument : [ "Accordion", "Jaw Harps", "Keyboards" ],
+    artist_id : 4
+  }
+)
+db.band_members.insert(
+  {
+    _id : 10,
+    member_name : "ABC",
+    instrument : [ "Banjo", "Cello" ],
+    artist_id : 4
+  }
+)
+db.band_members.insert(
+ {
+    _id : 11,
+    member_name : "LMN",
+    instrument : "Drums",
+    artist_id : 4
+  }
+)
+```
+
+## Querying the MongoDB Relationships
+```
+db.singers.aggregate([
+  {
+     $lookup:
+       {
+         from: "band_members",
+         localField: "_id",
+         foreignField: "artist_id",
+         as: "band_members"
+       }
+        },
+        { $match : { artist_name : "UVW" } }
+]).pretty()
+```
